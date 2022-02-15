@@ -1,2 +1,2 @@
-demo 1: https://assin1.sayedmd.repl.co/
-demo 2: https://noisyorovelapgru.sayedmd.repl.co/
+demo 1[HTML/CSS review]: https://assin1.sayedmd.repl.co/
+demo 2 [crash visualization on map in different layers]: https://noisyorovelapgru.sayedmd.repl.co/
