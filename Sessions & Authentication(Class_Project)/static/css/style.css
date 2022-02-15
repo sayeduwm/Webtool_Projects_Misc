@@ -1,0 +1,22 @@
+body {
+    background: #cecece;
+    
+}
+ul.a {
+  list-style-type: none;
+   margin: 0;
+  padding: 0;
+}
+
+li.a {
+  display: inline-block;
+  text-align:  center;
+  margin-right: 20px;
+}
+
+h1 {
+  font-weight: bold;
+  font-family: Brush Script MT;  
+    
+  
+}

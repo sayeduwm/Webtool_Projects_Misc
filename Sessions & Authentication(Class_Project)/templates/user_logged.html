@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>User Name and Gift Card List: {{count}}</h1>
+  {% for student in m %}
+  <li> User Name: {{ student.name}}&emsp;&emsp;&emsp;&emsp;GiftCard (Number):{{ student.count}}<l/i>
+   
+{% endfor %}
+{% endblock content %}

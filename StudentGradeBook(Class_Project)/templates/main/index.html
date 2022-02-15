@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Student Grade Book</h1>
+  <form method="post" action="/">
+  {% csrf_token %}
+
+  <table>
+    <tr>
+      <th></th>{% for j in col %}<th>{{j.0}}({{j.2}} points)</th>{% endfor %}<th>Total Points</th>
+    </tr>
+    {% for i in row %}
+      <tr><th>{{i.0}} {{i.1}}(ID:{{i.2}})</th>
+      {% for j in col %}  
+       
+        
+      
+        <td><input name="{{i.1}}_{{i.2}}_{{j.0}}"type="integer", value=100></td>
+        
+      {% endfor %}
+      
+      </tr>
+  {% endfor %}  
+  </table>
+  <input type="submit"/>
+   </form>
+  <table>
+    <tr><th>Studnet name@ Quiz</th><th>Points</th></tr>
+    {% for key, value in out.items %}
+      <tr><td>{{key}}</td><td>{{value}}</td></tr>
+    {% endfor %}
+  </table>
+{% endblock content %}

@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Test Description</h1>
+
+
+<button type="button" class="collapsible">Test 1: Missing records</button>
+<div class="content">
+  <p>When there is no data for volume or speed or occupancy for a record, then the record is invalid. Usually those fields are blanks. For example, if a record has volume =”Null”, speed=52MpH and occupancy=30%.then, the record will fail (flag=1) in this test.<br>
+If (Speed is “Null”) | (Volume is “Null”) | (Occupancy is “Null”), flag = 1 else 0.
+“Null” = missing record/blank.
+  </p>
+</div>
+
+<button type="button" class="collapsible">Test 2: Univariate range</button>
+<div class="content">
+  <p>
+    The volume, speed and occupancy of a record should be stay within a certain range. If not, the record is invalid.
+If (Volume is less than 0 or greater than 3,100) | (Speed is less than 0 or greater than 100) | Occupancy is less than 0 or greater than 100), flag = 1 else 0.<br>
+ All the values in the logic are considered as threshold values and they are predefined. Volume: It is considered that the number of vehicles cannot be more than 3100 on a lane within an hour period. Speed: In Wisconsin, Usually the current posted speed limit on urban freeways is 55 to 65 mile/hour and on rural freeways it is 70 mile/hour. Therefore, the record with speed more than 100 mile/hour is considered as invalid. Occupancy: occupancy cannot exceed 100%.
+Percent of records with data below zero, speeds greater than 100 mph, volume over 3,100 VPH or occupancy greater than 100% in selected data.    
+  </p>
+
+</div>
+<button type="button" class="collapsible">Test 3. Positive volume or occupancy with zero speed</button>
+<div class="content">
+  <p>The speed cannot be 0 when the occupancy or volume greater than 0. So, if the speed is 0, the record is invalid.
+If Speed = 0 & (Occupancy > 0 | Volume > 0), flag = 1 else 0.<br>
+Percent of records with speed=0 MPH and non-zero volume or occupancy in selected data    
+  </p>
+</div>
+
+<button type="button" class="collapsible">Test 4: Positive speed or occupancy with zero volume</button>
+<div class="content">
+  <p>The occupancy or speed greater than 0 indicates that there are vehicles on the road (volume is not 0). Therefore, the volume 0 means the record is invalid.
+If Volume = 0 & (Occupancy > 0 | Speed > 0), flag = 1 else 0.
+Percent of records with volume=0 vehicles and non-zero speed or occupancy in selected data.    
+  </p>
+</div>
+
+<button type="button" class="collapsible">Test 5. Positive speed and volume with zero occupancy</button>
+<div class="content">
+  <p>The volume or speed greater than 0 indicates that there are vehicles on the road. Therefore, detector must be occupied by the vehicles and the occupancy cannot be 0.<br>
+If Occupancy = 0 & (Volume > 0 | Speed > 0), flag = 1 else 0.
+Percent of records with occupancy=0% and non-zero speed or volume in selected data    
+  </p>
+</div>
+
+<button type="button" class="collapsible">Test 6: Infeasible speed in congestion</button>
+<div class="content">
+  <p>The speed cannot exceed a certain range under some density and occupancy conditions on the road. The range has been calculated from a large dataset.<br>Percent of records with speed out of range for corresponding density based on occupancy data in selected data.    
+  </p>
+</div>
+
+<button type="button" class="collapsible">Test 7: High free flow volume</button>
+<div class="content">
+  <p>The occupancy less than 5% provides a free flow volume. It is considered that a free flow volume will not exceed 1200 (vehicle/lane/hour).<br>
+If (Volume > 1200) & (Occupancy <5 %), flag = 1 else 0.
+Percent of records with volume out of range for corresponding occupancy in selected data.    
+  </p>
+</div>
+
+<button type="button" class="collapsible">Test 8: Average Effective Vehicle Length (AEVL)</button>
+<div class="content">
+  <p>A regular vehicle length cannot exceed a certain range. Therefore, the record with outside of this range is invalid.
+If (AEVL <8 feet) | (AEVL > 60 feet), flag = 1 else 0.<br>
+Percent of records with average effective vehicle length out of range between 8-60 feet based on occupancy, volume and speed in selected data    
+  </p>
+</div>
+
+<button type="button" class="collapsible">Test 9: Abrupt change in volume</button>
+<div class="content">
+  <p>The current volume cannot be too high or too low from the preceding and following volume. Always, it stays in a range. The range has been calculated from a large dataset.    
+  </p></div>
+
+<button type="button" class="collapsible">Test 10: Abrupt change in speed </button>
+<div class="content">
+  <p>The current speed cannot be too high or too low from the preceding and following speed. Always, it stays in a range. The range has been calculated from a large dataset.Percent of selected data records with speed difference exceeding 13 mph from the average of individual preceding and following records in time.    
+  </p></div>
+<h3>Unit: Speed in mile/hour,Volume in vehicle/lane/hour,Occupancy in percentage,Time interval: 5 minutes </h3>
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
+{% endblock content %}

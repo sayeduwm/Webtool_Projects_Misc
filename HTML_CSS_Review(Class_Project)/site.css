@@ -1,0 +1,124 @@
+body {
+  background: rgb(0, 2, 0);
+  font-family: Bell MT;
+  color:white;
+ 
+}
+
+ul.a {
+  list-style-type: none;
+  background:rgb(255, 254, 255);
+  margin: 0;
+  padding: 0;
+}
+ul.b {
+  list-style-type: squere;
+  margin: 0;
+  padding: 0;
+}
+
+li.a {
+  display: inline-block;
+  margin-right: 20px;
+}
+li.b {
+   margin-right: 2px;
+}
+
+ol{
+  list-style-type: 1;
+  line-height:1.6;
+}
+
+
+
+h1 {
+  font-weight: bold;
+  text-align:  center;
+  font-family: Brush Script MT;  
+  border:2px blue  solid;
+   
+  
+}
+
+.h1home {
+
+  color: rgba(245, 245, 250, 1);
+}
+.h1pizza {
+
+  color: rgba(255, 8, 0, 1);
+}
+.h1fish {
+   color: rgba(235, 10, 179, 1);
+}
+.h1beverage {
+   color: rgba(42, 241, 16, 1);
+}
+
+
+span {
+  font-size: 130%;
+  color:rgb(255, 238, 0);
+ 
+}
+
+
+/* unvisited link */
+a:link {
+  color: red;
+  font-weight:bold;
+  font-size:120%;
+
+}
+
+/* visited link */
+a:visited {
+  color: green;
+  
+}
+
+/* mouse over link */
+a:hover {
+  color: hotpink;
+  
+}
+
+/* selected link */
+a:active {
+  color: blue;
+}
+a.a{
+  color:white;
+}
+
+.clearfix{
+  overflow:auto;
+}
+img{
+  padding: 10px;
+}
+.img2 {
+  float: right;
+  padding:20px;
+}
+
+.img3 {
+  float: left;
+  padding:20px;
+}
+h2{
+  color:orange;
+}
+
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.top-right {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}

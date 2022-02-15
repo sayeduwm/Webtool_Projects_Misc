@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="post" action="/person">
+{% csrf_token %}
+<table>
+{{form.as_table}}
+</table>
+<input type="submit">
+</form>
+<table>
+{% for i in people %}
+<tr><td>{{i.0}}{{i.1}}</td><td></td><td></td><td>{{i.2}} (Points)</td></tr>
+{% endfor %}
+{% endblock content %}

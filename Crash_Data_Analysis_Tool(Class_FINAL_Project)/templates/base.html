@@ -1,0 +1,29 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+
+
+<html lang="en">
+<head>
+    
+    <title>TRaffic Data</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <script src="https://code.highcharts.com/highcharts.src.js"></script>
+ 
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+</head>
+<body>
+  <header>
+      <nav>
+      
+          <a href='/'>Home </a>
+          <a  href='readtest'> Read Test</a>
+          <a href='feedback'> Comments</a>
+                  
+      
+      </nav>
+    </header>
+ 
+    {% block content %}{% endblock content %}
+</body>
+</html>

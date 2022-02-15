@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Traffic Data </h1>
+<div id="googleMap" ></div>
+
+<script>
+function myMap() {
+var mapProp= {
+    center:new google.maps.LatLng(43.29489 ,  -87.9065 ),
+    zoom:8,
+};
+var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBz7POxrQ6oy_BXeQyp0lOoJLCDJ6gQupQ&callback=myMap"></script>
+
+
+<form method="post" action="/">
+{% csrf_token %}
+<div class="grid-container">
+<div class="grid-item item5">
+<tr>Detector(s)</tr><br>
+<select name="DetectorID" size="4" multiple required>
+{% for  value in detector %}
+  <option value={{value}}>{{value}}</option>      
+{% endfor %}
+</select>
+
+</div>
+<div class="grid-item item1">
+<tr>
+  From(Year): <input type="date" name="FDate" required>From(Time)<select required name='FTime' > 
+  {% for  value in time %}
+  <option value={{value}}>{{value}}</option>      
+  {% endfor %}</select>
+</tr> 
+<br> 
+</div>
+<div class="grid-item item2">
+<tr>To(Year): <input type="date" name="TDate" required>
+To(Time)
+<select name='TTime' required>
+{% for  value in time %}
+<option value={{value}}>{{value}}</option>      
+{% endfor %}
+</select>
+</tr>
+</div> </div> 
+<br>
+<input type="submit" value="Get Statistics" class='button'>
+</form>
+
+     
+  
+
+  
+{% endblock content %}

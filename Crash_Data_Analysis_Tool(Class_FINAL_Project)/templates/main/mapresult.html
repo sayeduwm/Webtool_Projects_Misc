@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+  
+<div class="grid-item item22">
+<div id="container" height='100px'></div>
+<script>
+  Highcharts.chart('container', {{ chart|safe }});
+</script>
+</div>
+
+<div class="grid-container2">
+
+<div class="grid-item item21">
+<h1>Summary of the Searched results</h1><p>(Percentage of bad data/outliers/missing values)</p>
+
+<table>
+<tr><td><b>Detector ID</td><td><b>Test 1</td><td><b>Test 2</td><td><b>Test 3</td><td><b>Test 4</td><td><b>Test 5</td><td><b>Test 6</td><td><b>Test 7</td><td><b>Test 8</td><td><b>Test 9</td><td><b>Test 10</td></tr>
+{% for  value in rslt %}
+
+  <tr><td>{{value.0}}</td><td>{{value.1}}%</td><td>{{value.2}}%</td><td>{{value.3}}%</td><td>{{value.4}}%</td><td>{{value.5}}%</td><td>{{value.6}}%</td><td>{{value.7}}%</td><td>{{value.8}}%</td><td>{{value.9}}%</td><td>{{value.10}}%</td></tr>  
+{% endfor %}
+</table>
+
+</div></div>
+
+
+
+
+<!--
+To use this code on your website, get a free API key from Google.
+Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+-->
+
+{% endblock content %}

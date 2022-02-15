@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+ 
+{% block content %}
+{% if messages %}
+<ul>
+	{% for message in messages %}
+	   <li>{{ message }}</li>
+	{% endfor %}
+</ul>
+{% endif %}
+<form action="/feedback" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" >
+</form>
+
+<br>
+<table>
+<tr><td><b>Name</b></td><td><b>Response</b></td><td><b>Satisfy (True for Happy)</b></td>
+  {% for feedback in msg %}
+  <tr><td>{{ feedback.1}}</td><td>{{ feedback.3}}</td><td>
+    {{ feedback.4}}</td></tr>
+   
+{% endfor %}
+</table>
+{% endblock content %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<form action="friend" method="post">
+  {% csrf_token %}
+  <table>
+  {{form.as_table}}
+  </table>
+  <br/><input type="submit"/>
+</form>
+<table>
+{% for i in friends %}
+<tr><td>{{i.0}}</td><td>{{i.1}}</td><td>{{i.2}}</td></tr>
+{% endfor %}
+{% endblock content %} 
+
+
